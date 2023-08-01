@@ -1,0 +1,13 @@
+#!/bin/bash
+# Script to configure web server and pull index.html from S3 bucket
+
+# Install Apache web server
+sudo yum update -y
+sudo yum install -y httpd
+
+# Pull index.html from S3 bucket
+sudo aws s3 cp s3://your-unique-webserver-config-bucket/index.html /var/www/html/index.html
+
+# Start Apache web server
+sudo systemctl start httpd
+sudo systemctl enable httpd
